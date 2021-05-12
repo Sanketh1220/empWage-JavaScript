@@ -5,15 +5,17 @@
  * @since 12-05-2021
  */
 
-//UC-1
+//Assigning varaibles value as const as our intention is never changing there values
+const IS_ABSENT = 0;
+const IS_PRESENT = 1;
+const PART_TIME_HOURS = 4;
+const FULL_TIME_HOURS = 8;
+const WAGE_PER_HOUR = 20;
+const NUM_OF_WORKING_DAYS = 20;
+const MAX_WORKING_HOURS_PER_MONTH = 160;
 
 //Generating a random number
 let employeeChecker =  Math.floor((Math.random() * 10) % 2);
-
-//Assigning varaibles value as const as our intention is never changing there values
-const IS_ABSENT = 0;
-
-const IS_PRESENT = 1;
 
 //If-Else statement to check for presence and absence of employee
 if (employeeChecker == IS_ABSENT) {
@@ -22,18 +24,8 @@ if (employeeChecker == IS_ABSENT) {
     console.log("Employee is Absent!");
 }
 
-//UC-2
-
 //Generating a random number
 let empSalary = Math.floor((Math.random() * 10) % 3);
-
-//Assigning varaibles value as const as our intention is never changing there values
-const PART_TIME_HOURS = 4;
-
-const FULL_TIME_HOURS = 8;
-
-const WAGE_PER_HOUR = 20;
-
 let empHours = 0;
 
 /**
@@ -54,18 +46,19 @@ function getWorkingHours(empSalary){
     }
 }
 
-const NUM_OF_WORKING_DAYS = 20;
-
 let totalEmpHours = 0;
+let totalWorkingDays = 0;
 
 /**
- * For loop to run and get hours for 20 working days
+ * Runing a while loop until any of condition is satisfied max of working hours or working days
  */
-for (let day = 0; day < NUM_OF_WORKING_DAYS; day++){
+while (totalEmpHours <= MAX_WORKING_HOURS_PER_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS){
+    totalWorkingDays++;
     let empSalary = Math.floor((Math.random() * 10) % 3);
     totalEmpHours += getWorkingHours(empSalary);
 }
 
 //Calculating employee wage
 let empWage = totalEmpHours * WAGE_PER_HOUR;
-console.log("Employee worked for " + totalEmpHours + " hours and wage is $" + empWage);
+console.log("Employee worked for " + totalWorkingDays + " days and for total of " 
+    + totalEmpHours + " hours and wage is $" + empWage);
