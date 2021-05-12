@@ -5,6 +5,8 @@
  * @since 12-05-2021
  */
 
+//UC-1
+
 //Generating a random number
 let employeeChecker =  Math.floor((Math.random() * 10) % 2);
 
@@ -20,6 +22,8 @@ if (employeeChecker == IS_ABSENT) {
     console.log("Employee is Absent!");
 }
 
+//UC-2
+
 //Generating a random number
 let empSalary = Math.floor((Math.random() * 10) % 3);
 
@@ -30,16 +34,28 @@ const FULL_TIME_HOURS = 8;
 
 const WAGE_PER_HOUR = 20;
 
-//Switch case to calculate wage according to random values generated
-switch(empSalary) {
-    case 0:
-        console.log("Employee wage is 0");
-        break;
+let empHours = 0;
 
-    case 1:
-        console.log("Employee wage is $" + (PART_TIME_HOURS * WAGE_PER_HOUR));
-        break;
+/**
+ * Function of switch case to calculate wage according to random values generated
+ * @param {*} empSalary 
+ * @returns 
+ */
+function getWorkingHours(empSalary){
+    switch(empSalary) {
+        case 0:
+            return 0;
 
-    case 2:
-        console.log("Employee wage is $" + (FULL_TIME_HOURS * WAGE_PER_HOUR));
+        case 1:
+            return PART_TIME_HOURS;
+    
+        case 2:
+            return FULL_TIME_HOURS;
+    }
 }
+
+empHours = getWorkingHours(empSalary);
+
+//Calculating employee wage
+let empWage = empHours * WAGE_PER_HOUR;
+console.log("Employee wage is $" + empWage);
