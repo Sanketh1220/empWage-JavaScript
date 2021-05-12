@@ -54,8 +54,18 @@ function getWorkingHours(empSalary){
     }
 }
 
-empHours = getWorkingHours(empSalary);
+const NUM_OF_WORKING_DAYS = 20;
+
+let totalEmpHours = 0;
+
+/**
+ * For loop to run and get hours for 20 working days
+ */
+for (let day = 0; day < NUM_OF_WORKING_DAYS; day++){
+    let empSalary = Math.floor((Math.random() * 10) % 3);
+    totalEmpHours += getWorkingHours(empSalary);
+}
 
 //Calculating employee wage
-let empWage = empHours * WAGE_PER_HOUR;
-console.log("Employee wage is $" + empWage);
+let empWage = totalEmpHours * WAGE_PER_HOUR;
+console.log("Employee worked for " + totalEmpHours + " hours and wage is $" + empWage);
